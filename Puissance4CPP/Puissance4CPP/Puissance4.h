@@ -6,13 +6,13 @@
 #include <string>
 
 // Taille du tableau
-const int rows = 6;
-const int cols = 7;
+const int ligne = 6;
+const int colonne = 7;
 
 // Déclaration des fonctions
-void afficherTableau(char board[rows][cols]);
-bool verifierVictoire(char board[rows][cols], char joueur);
-bool tableauPlein(char board[rows][cols]);
+void afficherTableau(char board[ligne][colonne]);
+bool verifierVictoire(char board[ligne][colonne], char joueur);
+bool tableauPlein(char board[ligne][colonne]);
 void jouerPuissance4();
 
 #endif // PUISSANCE4_H

@@ -8,9 +8,9 @@ int main() {
     int choix;
 
     std::cout << "Choisissez un jeu:\n";
-    std::cout << "1. Jeu 1 \n";
+    std::cout << "1. Jeu de BullAndCow \n";
     std::cout << "2. Jeu de Puissance 4 \n";
-    std::cout << "Entrez le numéro du jeu (1 ou 2): ";
+    std::cout << "Entrez le numero du jeu (1 ou 2): ";
     std::cin >> choix;
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //evite l'interverence en le cin du main et du jeu 

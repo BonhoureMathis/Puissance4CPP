@@ -3,62 +3,62 @@
 #include <cctype>
 #include <iostream>
 
-// Fonction pour afficher le tableau
-void afficherTableau(char board[rows][cols]) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
+void afficherTableau(char board[ligne][colonne]) {
+    for (int i = 0; i < ligne; ++i) {
+        for (int j = 0; j < colonne; ++j) {
             std::cout << board[i][j];
-            if (j < cols - 1) std::cout << " | ";
+            if (j < colonne - 1) std::cout << " | ";
         }
         std::cout << std::endl;
-        if (i < rows - 1) {
-            for (int j = 0; j < cols; ++j) {
+        if (i < ligne - 1) {
+            for (int j = 0; j < colonne; ++j) {
                 std::cout << "---";
             }
             std::cout << std::endl;
         }
     }
 
-    // Afficher les numéros de colonnes
-    for (int j = 0; j < cols; ++j) {
+    // Afficher les numéros en bas des colonnes de jeu
+    for (int j = 0; j < colonne; ++j) {
         std::cout << j + 1;
-        if (j < cols - 1) std::cout << "   ";
+        if (j < colonne - 1) std::cout << "   ";
     }
     std::cout << std::endl;
 }
 
-// Fonction pour vérifier la victoire
-bool verifierVictoire(char board[rows][cols], char joueur) {
-    // Vérification horizontale
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols - 3; ++j) {
+
+bool verifierVictoire(char board[ligne][colonne], char joueur) {
+
+    // Vérification de victoire horizontale
+    for (int i = 0; i < ligne; ++i) {
+        for (int j = 0; j < colonne - 3; ++j) {
             if (board[i][j] == joueur && board[i][j + 1] == joueur && board[i][j + 2] == joueur && board[i][j + 3] == joueur) {
                 return true;
             }
         }
     }
 
-    // Vérification verticale
-    for (int j = 0; j < cols; ++j) {
-        for (int i = 0; i < rows - 3; ++i) {
+    // Vérification de victoire verticale
+    for (int j = 0; j < colonne; ++j) {
+        for (int i = 0; i < ligne - 3; ++i) {
             if (board[i][j] == joueur && board[i + 1][j] == joueur && board[i + 2][j] == joueur && board[i + 3][j] == joueur) {
                 return true;
             }
         }
     }
 
-    // Vérification diagonale descendante
-    for (int i = 0; i < rows - 3; ++i) {
-        for (int j = 0; j < cols - 3; ++j) {
+    // Vérification de victoire diagonale descendante
+    for (int i = 0; i < ligne - 3; ++i) {
+        for (int j = 0; j < colonne - 3; ++j) {
             if (board[i][j] == joueur && board[i + 1][j + 1] == joueur && board[i + 2][j + 2] == joueur && board[i + 3][j + 3] == joueur) {
                 return true;
             }
         }
     }
 
-    // Vérification diagonale montante
-    for (int i = 3; i < rows; ++i) {
-        for (int j = 0; j < cols - 3; ++j) {
+    // Vérification de victoire diagonale montante
+    for (int i = 3; i < ligne; ++i) {
+        for (int j = 0; j < colonne - 3; ++j) {
             if (board[i][j] == joueur && board[i - 1][j + 1] == joueur && board[i - 2][j + 2] == joueur && board[i - 3][j + 3] == joueur) {
                 return true;
             }
@@ -69,9 +69,9 @@ bool verifierVictoire(char board[rows][cols], char joueur) {
 }
 
 // Fonction pour vérifier si le tableau est plein
-bool tableauPlein(char board[rows][cols]) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
+bool tableauPlein(char board[ligne][colonne]) {
+    for (int i = 0; i < ligne; ++i) {
+        for (int j = 0; j < colonne; ++j) {
             if (board[i][j] == '.') {
                 return false;
             }
@@ -80,19 +80,19 @@ bool tableauPlein(char board[rows][cols]) {
     return true;
 }
 
-// Fonction pour demander un nom et s'assurer qu'il est valide
+// demander nom du joueur
 std::string demanderNom(const std::string& prompt) {
     std::string nom;
     while (true) {
         std::cout << prompt;
         std::getline(std::cin, nom);
 
-        // Vérifier si le nom est non vide et contient uniquement des lettres
         bool nomValide = !nom.empty();
         for (char c : nom) {
-            if (!std::isalpha(c)) {  // Vérifie si chaque caractère est une lettre
+            if (!std::isalpha(c)) {  
                 nomValide = false;
                 break;
+                //Verifie que le nom du joueur est bien une chaine de caractere
             }
         }
 
@@ -101,63 +101,67 @@ std::string demanderNom(const std::string& prompt) {
         }
         else {
             std::cout << "Nom invalide. Veuillez entrer un nom sans chiffres ou espace.\n";
+            //Si le nom est pas une chaine de caractere alors le joueur doit re choisir un nom
         }
     }
     return nom;
 }
 
-// Fonction pour demander une colonne valide
-int demanderColonne(int maxCol) {
+// Choisir colonne pour jouer son piont
+int choisirColonne(int maxCol) {
     int col;
     while (true) {
         std::cout << "Choisissez une colonne (1 à " << maxCol << "): ";
         if (std::cin >> col && col >= 1 && col <= maxCol) {
             break;
         }
-        std::cout << "Entrée invalide. Veuillez entrer un nombre entre 1 et " << maxCol << ".\n";
+        std::cout << "Entree invalide. Veuillez entrer un nombre entre 1 et " << maxCol << ".\n";  // verifier que la reponse du joueur est bien entre 1 et 7
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     return col - 1;
 }
 
-// Fonction pour jouer au jeu de Puissance 4
-void jouerPuissance4() {
-    char board[rows][cols];
 
-    // Initialisation du tableau avec des points (cases vides)
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            board[i][j] = '.';
+void jouerPuissance4() {
+    char tableau[ligne][colonne];
+
+    // initialisation du tableau 
+    for (int i = 0; i < ligne; ++i) {
+        for (int j = 0; j < colonne; ++j) {
+            tableau[i][j] = '.';
         }
     }
 
-    // Demander les prénoms des joueurs
+    // demande des prenoms des joueurs
     std::string player1_name = demanderNom("Entrez le prenom du premier joueur: ");
     std::string player2_name = demanderNom("Entrez le prenom du deuxième joueur: ");
 
-    // Récupérer les initiales des joueurs
+    // garde que la premiere lettre du prenom
     char player1_initial = player1_name[0];
     char player2_initial = player2_name[0];
 
     std::cout << "Le premier joueur est " << player1_name << " (" << player1_initial << ")\n";
-    std::cout << "Le deuxième joueur est " << player2_name << " (" << player2_initial << ")\n\n";
+    std::cout << "Le deuxieme joueur est " << player2_name << " (" << player2_initial << ")\n\n";
 
     bool joueur1Tour = true;
     bool jeuTermine = false;
 
+    // boucle de gameplay
     while (!jeuTermine) {
-        afficherTableau(board);
+        afficherTableau(tableau);
         char currentPlayerInitial = joueur1Tour ? player1_initial : player2_initial;
+        int col = choisirColonne(colonne);
+        //affiche le tableau et dit quelle joueur doit jouer et ou il veut jouer
 
-        int col = demanderColonne(cols);
 
         bool placementReussi = false;
-        for (int i = rows - 1; i >= 0; --i) {
-            if (board[i][col] == '.') {
-                board[i][col] = currentPlayerInitial;
+        for (int i = ligne - 1; i >= 0; --i) {
+            if (tableau[i][col] == '.') {
+                tableau[i][col] = currentPlayerInitial;
                 placementReussi = true;
                 break;
+                //place le jeton du joueur dans le colonne choisie
             }
         }
 
@@ -166,20 +170,23 @@ void jouerPuissance4() {
             continue;
         }
 
-        if (verifierVictoire(board, currentPlayerInitial)) {
-            afficherTableau(board);
+        if (verifierVictoire(tableau, currentPlayerInitial)) {
+            afficherTableau(tableau);
             std::cout << "Felicitations, Joueur " << currentPlayerInitial << " a gagne !\n";
             jeuTermine = true;
             continue;
+            //verifie si le jeton jouer par le joueur lui as donné la victoire
         }
 
-        if (tableauPlein(board)) {
-            afficherTableau(board);
+        if (tableauPlein(tableau)) {
+            afficherTableau(tableau);
             std::cout << "Match nul ! Le tableau est plein et aucun joueur n'a gagne.\n";
             jeuTermine = true;
             continue;
+            //verifie le match nul
         }
 
         joueur1Tour = !joueur1Tour;
+        // passe au prochain tour et laisse l'autre joueur jouer son jeton
     }
 }
