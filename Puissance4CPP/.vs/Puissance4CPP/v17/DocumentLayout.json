@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|solutionrelative:Puissance4CPP\\Puissance4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|solutionrelative:Puissance4CPP\\Puissance4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54A0CBCC-F86A-449C-97DF-BC2E17D4B9EC}|Puissance4CPP\\Puissance4CPP.vcxproj|solutionrelative:Puissance4CPP\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -19,12 +27,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Puissance4.h",
+              "DocumentMoniker": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.h",
+              "RelativeDocumentMoniker": "Puissance4CPP\\Puissance4.h",
+              "ToolTip": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.h",
+              "RelativeToolTip": "Puissance4CPP\\Puissance4.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-10T08:38:34.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Puissance4.cpp",
+              "DocumentMoniker": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.cpp",
+              "RelativeDocumentMoniker": "Puissance4CPP\\Puissance4.cpp",
+              "ToolTip": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Puissance4.cpp",
+              "RelativeToolTip": "Puissance4CPP\\Puissance4.cpp",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAAwIMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-10T08:34:23.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Main.cpp",
               "DocumentMoniker": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Main.cpp",
               "RelativeDocumentMoniker": "Puissance4CPP\\Main.cpp",
               "ToolTip": "D:\\Ecole_E-art\\2eme_annee\\Code\\Puissance4\\Puissance4CPP\\Puissance4CPP\\Puissance4CPP\\Main.cpp",
               "RelativeToolTip": "Puissance4CPP\\Main.cpp",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAmwC4AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-09T21:59:28.424Z",
               "EditorCaption": ""
