@@ -11,6 +11,9 @@ int main() {
     std::cout << "Entrez le numéro du jeu (1 ou 2): ";
     std::cin >> choix;
 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //evite l'interverence en le cin du main et du jeu 
+
+
     switch (choix) {
     case 1:
         //    jouerJeu1();

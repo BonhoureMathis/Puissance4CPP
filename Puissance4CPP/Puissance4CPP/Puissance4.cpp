@@ -1,4 +1,7 @@
 #include "puissance4.h"
+#include <limits>
+#include <cctype>
+#include <iostream>
 
 // Fonction pour afficher le tableau
 void afficherTableau(char board[rows][cols]) {
@@ -77,6 +80,47 @@ bool tableauPlein(char board[rows][cols]) {
     return true;
 }
 
+// Fonction pour demander un nom et s'assurer qu'il est valide
+std::string demanderNom(const std::string& prompt) {
+    std::string nom;
+    while (true) {
+        std::cout << prompt;
+        std::getline(std::cin, nom);
+
+        // Vérifier si le nom est non vide et contient uniquement des lettres
+        bool nomValide = !nom.empty();
+        for (char c : nom) {
+            if (!std::isalpha(c)) {  // Vérifie si chaque caractère est une lettre
+                nomValide = false;
+                break;
+            }
+        }
+
+        if (nomValide) {
+            break;
+        }
+        else {
+            std::cout << "Nom invalide. Veuillez entrer un nom sans chiffres ni caractères spéciaux.\n";
+        }
+    }
+    return nom;
+}
+
+// Fonction pour demander une colonne valide
+int demanderColonne(int maxCol) {
+    int col;
+    while (true) {
+        std::cout << "Choisissez une colonne (1 à " << maxCol << "): ";
+        if (std::cin >> col && col >= 1 && col <= maxCol) {
+            break;
+        }
+        std::cout << "Entrée invalide. Veuillez entrer un nombre entre 1 et " << maxCol << ".\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    return col - 1;
+}
+
 // Fonction pour jouer au jeu de Puissance 4
 void jouerPuissance4() {
     char board[rows][cols];
@@ -88,40 +132,25 @@ void jouerPuissance4() {
         }
     }
 
-    std::string player1_name, player2_name;
-    char player1_initial, player2_initial;
-
-    // Ignorer les caractères résiduels dans le flux d'entrée (par exemple, '\n' après une précédente entrée)
-    std::cin.ignore();  // Cela nettoie le flux d'entrée
-
     // Demander les prénoms des joueurs
-    std::cout << "Entrez le prenom du premier joueur: ";
-    std::getline(std::cin, player1_name);  // Lire le prénom du premier joueur
-    std::cout << "Entrez le prenom du deuxième joueur: ";
-    std::getline(std::cin, player2_name);  // Lire le prénom du deuxième joueur
+    std::string player1_name = demanderNom("Entrez le prenom du premier joueur: ");
+    std::string player2_name = demanderNom("Entrez le prenom du deuxième joueur: ");
 
     // Récupérer les initiales des joueurs
-    player1_initial = player1_name[0];
-    player2_initial = player2_name[0];
+    char player1_initial = player1_name[0];
+    char player2_initial = player2_name[0];
 
     std::cout << "Le premier joueur est " << player1_name << " (" << player1_initial << ")\n";
     std::cout << "Le deuxième joueur est " << player2_name << " (" << player2_initial << ")\n\n";
 
     bool joueur1Tour = true;
     bool jeuTermine = false;
-    int col;
 
     while (!jeuTermine) {
         afficherTableau(board);
         char currentPlayerInitial = joueur1Tour ? player1_initial : player2_initial;
 
-        std::cout << "Joueur " << currentPlayerInitial << ", choisissez une colonne (1 à " << cols << "): ";
-        std::cin >> col;
-        if (col < 1 || col > cols) {
-            std::cout << "Colonne invalide. Essayez encore.\n";
-            continue;
-        }
-        col -= 1;
+        int col = demanderColonne(cols);
 
         bool placementReussi = false;
         for (int i = rows - 1; i >= 0; --i) {
@@ -138,12 +167,14 @@ void jouerPuissance4() {
         }
 
         if (verifierVictoire(board, currentPlayerInitial)) {
+            afficherTableau(board);
             std::cout << "Félicitations, Joueur " << currentPlayerInitial << " a gagné !\n";
             jeuTermine = true;
             continue;
         }
 
         if (tableauPlein(board)) {
+            afficherTableau(board);
             std::cout << "Match nul ! Le tableau est plein et aucun joueur n'a gagne.\n";
             jeuTermine = true;
             continue;
