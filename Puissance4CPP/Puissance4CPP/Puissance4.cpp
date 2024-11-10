@@ -100,7 +100,7 @@ std::string demanderNom(const std::string& prompt) {
             break;
         }
         else {
-            std::cout << "Nom invalide. Veuillez entrer un nom sans chiffres ni caractères spéciaux.\n";
+            std::cout << "Nom invalide. Veuillez entrer un nom sans chiffres ou espace.\n";
         }
     }
     return nom;
@@ -168,7 +168,7 @@ void jouerPuissance4() {
 
         if (verifierVictoire(board, currentPlayerInitial)) {
             afficherTableau(board);
-            std::cout << "Félicitations, Joueur " << currentPlayerInitial << " a gagné !\n";
+            std::cout << "Felicitations, Joueur " << currentPlayerInitial << " a gagne !\n";
             jeuTermine = true;
             continue;
         }

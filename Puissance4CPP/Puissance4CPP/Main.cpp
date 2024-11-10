@@ -1,6 +1,8 @@
 #include <iostream>
 #include "puissance4.h"
-//#include "jeu1.h"
+#include "bullAndCow.h"
+
+void jouerBullAndCow();
 
 int main() {
     int choix;
@@ -16,8 +18,8 @@ int main() {
 
     switch (choix) {
     case 1:
-        //    jouerJeu1();
-        //         break;
+            jouerBullAndCow();
+                 break;
     case 2:
         jouerPuissance4();
             break;
